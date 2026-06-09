@@ -1,0 +1,6 @@
+model_name: xgboost
+
+parameters:
+  n_estimators: 20
+  learning_rate: 0.1
+  max_depth: 4
