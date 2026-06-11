@@ -33,7 +33,7 @@ HOLDOUT_ENGINEERED_PATH = load_from_s3(
     "data/processed/holdout.csv"
 )
 HOLDOUT_RAW_PATH = load_from_s3(
-    "raw/raw_holdout.csv",
+    "raw/cleaned_holdout.csv",
     "data/raw/cleaned_holdout.csv"
 )
 
