@@ -113,16 +113,14 @@ Example forecast for April 3rd, 2021:
 
 ### Prediction vs Actual
 
-The model accurately captures temporal trends and peak generation periods while maintaining low forecasting error.
-
 <p align="center">
   <img src="predictions_vs_actuals.png"
-       alt="Predictions vs Actuals"
+       alt="Predictions vs Actuals April 2021"
        width="900">
 </p>
 
 <p align="center">
-  Comparison of actual and predicted wind power output on unseen test data.
+  Comparison of actual and predicted wind power output on unseen test data for April 2021.
 </p>
 
 The model successfully captures:
@@ -130,7 +128,7 @@ The model successfully captures:
 - Peak production periods
 - Sudden output changes
 - Seasonal variability
-- 
+-  
 ## MLOps Workflow
 
 The project implements a production-oriented MLOps pipeline encompassing experiment tracking, model versioning, containerization, automated deployment, and cloud-based model serving.
