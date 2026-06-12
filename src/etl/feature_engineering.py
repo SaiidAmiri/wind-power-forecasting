@@ -10,17 +10,12 @@ def create_time_features(df):
     )
     df['time'] = pd.to_datetime(df['time'])
     #df = df.sort_values('time').reset_index(drop=True)
-    #df["time"] = pd.to_datetime(df["time"])
     #df = df.sort_values("time").set_index("time")
     df['year'] = df['time'].dt.year
     df['hour'] = df['time'].dt.hour
     df['month'] = df['time'].dt.month
     df['day'] = df['time'].dt.day
-    #df['year'] = df.index.year
-    #df['month'] = df.index.month
-    #df['day'] = df.index.day
-    #df['hour'] = df.index.hour
-    #df = df.drop(columns=["time"])
+    df = df.drop(columns=["time"])
 
     return df
 
