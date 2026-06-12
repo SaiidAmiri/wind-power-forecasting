@@ -51,15 +51,34 @@ jobs:
       # Deploy to ECS - API
       - name: Deploy wind-power-api-service
         run: |
+          # Get current task definition
+          TASK_DEF=$(aws ecs describe-task-definition --task-definition wind-power-api-task-ecs --query 'taskDefinition')
+          
+          # Update image URI to force new pull
+          NEW_TASK_DEF=$(echo $TASK_DEF | jq --arg IMAGE "652953065856.dkr.ecr.eu-central-1.amazonaws.com/wind-power-api:${GITHUB_SHA}" '.containerDefinitions[0].image = $IMAGE | del(.taskDefinitionArn, .revision, .status, .requiresAttributes, .placementConstraints, .compatibilities, .registeredAt, .registeredBy)')
+          
+          # Register new task definition
+          aws ecs register-task-definition --cli-input-json "$NEW_TASK_DEF"
+          # Update service with new task definition
           aws ecs update-service \
           --cluster wind-power-api-cluster-ecs \
           --service wind-power-api-service \
-          --force-new-deployment
+          --task-definition wind-power-api-task-ecs
 
-      # Deploy to ECS - Streamlit
+      # Deploy to ECS - Streamlit  
       - name: Deploy wind-power-streamlit-service
         run: |
+          # Get current task definition
+          TASK_DEF=$(aws ecs describe-task-definition --task-definition wind-power-streamlit --query 'taskDefinition')
+    
+          # Update image URI
+          NEW_TASK_DEF=$(echo $TASK_DEF | jq --arg IMAGE "652953065856.dkr.ecr.eu-central-1.amazonaws.com/wind-power-streamlit:${GITHUB_SHA}" '.containerDefinitions[0].image = $IMAGE | del(.taskDefinitionArn, .revision, .status, .requiresAttributes, .placementConstraints, .compatibilities, .registeredAt, .registeredBy)')
+    
+          # Register new task definition
+          aws ecs register-task-definition --cli-input-json "$NEW_TASK_DEF"
+    
+          # Update service
           aws ecs update-service \
           --cluster wind-power-api-cluster-ecs \
           --service wind-power-streamlit-service \
-          --force-new-deployment
+          --task-definition wind-power-streamlit
