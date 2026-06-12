@@ -175,3 +175,10 @@ Streamlit provides:
 - Real-time inference
 - Visualization of predictions vs actual values
 - Real-time performance evaluation using MAE, RMSE, and percentage error metrics
+
+## Future Improvements
+
+- Model monitoring and drift detection
+- Feature store implementation
+- Automated retraining pipeline
+- Deep learning models (LSTM, TFT)
