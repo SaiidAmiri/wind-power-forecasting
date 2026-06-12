@@ -56,7 +56,8 @@ def predict(
 
     # Step 4: Align columns with training schema
     if TRAIN_FEATURE_COLUMNS is not None:
-        df = df.reindex(columns=TRAIN_FEATURE_COLUMNS, fill_value=0)
+        #df = df.reindex(columns=TRAIN_FEATURE_COLUMNS, fill_value=0)
+        df = df[TRAIN_FEATURE_COLUMNS]  # Only select the training columns
     
     # Step 5: Load model and predict
     model = joblib.load(model_path)
