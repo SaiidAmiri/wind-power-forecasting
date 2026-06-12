@@ -53,6 +53,8 @@ def predict(
     y_true = None
     if "power" in df.columns:
         y_true = df["power"].tolist()
+        df = df.drop(columns=["power"])
+        logger.info("Extracted and removed 'power' column from features")
 
     # Step 4: Align columns with training schema
     if TRAIN_FEATURE_COLUMNS is not None:
