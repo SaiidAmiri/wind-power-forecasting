@@ -17,34 +17,25 @@ The project goes beyond model development by implementing a complete MLOps workf
 
 ## System Architecture
 
-Raw Data
-    │
-    ▼
-Data Preprocessing and Feature Engineering
-    │
-    ▼
-Optuna Hyperparameter Search
-    │
-    ▼
-MLflow Tracking
-    │
-    ▼
-Best Model Selection
-    │
-    ▼
-MLflow Model Registry
-    │
-    ▼
-Docker Build
-    │
-    ▼
-GitHub Actions CI/CD
-    │
-    ▼
-AWS ECS Deployment
-    │
-    ▼
-Streamlit Inference Service
+→ Raw Data
+
+→ Data Preprocessing and Feature Engineering
+
+→ Optuna Hyperparameter Search
+
+→ MLflow Tracking
+
+→ Best Model Selection
+
+→ MLflow Model Registry
+
+→ Docker Build
+
+→ GitHub Actions CI/CD
+
+→ AWS ECS Deployment
+
+→ Streamlit Inference Service
 
 ## Problem Statement
 
@@ -122,6 +113,17 @@ Example forecast for April 3rd, 2021:
 
 ### Prediction vs Actual
 
+The model accurately captures temporal trends and peak generation periods while maintaining low forecasting error.
+
+<p align="center">
+  <img src="predictions_vs_actuals.png"
+       alt="Predictions vs Actuals"
+       width="900">
+</p>
+
+<p align="center">
+  Comparison of actual and predicted wind power output on unseen test data.
+</p>
 
 The model successfully captures:
 - Daily generation patterns
